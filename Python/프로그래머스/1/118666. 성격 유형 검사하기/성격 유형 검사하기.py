@@ -8,26 +8,24 @@ def solution(survey, choices):
     
     #값이 1,2,3,4,5,6,7
     for i in range(len(survey)):
+        #4를 기준으로 if <4이면 survey[i][0]에 더해주기
         if choices[i] < 4:
+            #1이면3, 2이면2, 3이면1 : -4해서 절댓값
             d[survey[i][0]] += abs(choices[i]-4)
         elif choices[i] == 4:
             continue
+        #if >4이면 survey[i][1]에 더해주기
         else:
+             #5면1, 6이면2, 7이면3 : -4
             d[survey[i][1]] += abs(choices[i]-4)
             
             
-    #4를 기준으로 if <4이면 키의 i[0]에 더해주기
-    #1이면3, 2이면2, 3이면1
-    
-    #if >4이면 키의 i[1]에 더해주기
-    #5면1, 6이면2, 7이면3
-    
-  
+    #네가지 ex)RCJA
+    #각 지표에서 큰값으로 결정해서 나오면됨
     for a,b in ['RT','CF','JM','AN']:
         if d[a]>=d[b]:
             answer+= a
         else:
             answer+=b
-    #네가지 ex)RCJA
-    #각 지표에서 큰값으로 결정해서 나오면됨
+
     return answer
